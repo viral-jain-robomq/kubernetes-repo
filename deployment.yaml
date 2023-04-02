@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-hello-web
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: k8s-hello-web
+  template:
+    metadata:
+      labels:
+        app: k8s-hello-web
+    spec:
+      containers:
+      - name: k8s-hello-web
+        image: viraljainrobomq/k8s-hello-web
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "200m"
+        ports:
+        - containerPort: 3000
